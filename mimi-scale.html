@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MiMi Smart Bluetooth Body Weighing Scale</title>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <style>
     body {
       margin: 0;
@@ -25,11 +26,11 @@
       margin: 10px 0 20px;
       font-size: 18px;
     }
-    .cta-top {
+    .cta-top, .cta {
       text-align: center;
-      margin-bottom: 30px;
+      margin: 30px 0;
     }
-    .cta-top button {
+    .cta-top a button, .cta a button, .razorpay-button {
       background: #FF5722;
       color: #fff;
       padding: 15px 30px;
@@ -37,6 +38,7 @@
       font-size: 18px;
       border-radius: 5px;
       cursor: pointer;
+      text-decoration: none;
     }
     .container {
       max-width: 1200px;
@@ -89,18 +91,13 @@
       margin: 8px 0;
       font-size: 16px;
     }
-    .cta {
+    .upi-section {
       text-align: center;
-      margin-top: 30px;
+      margin-top: 50px;
     }
-    .cta button {
-      background: #FF5722;
-      color: #fff;
-      padding: 15px 30px;
-      border: none;
-      font-size: 18px;
-      border-radius: 5px;
-      cursor: pointer;
+    .upi-section img {
+      max-width: 200px;
+      margin-top: 10px;
     }
     footer {
       background: #263238;
@@ -108,6 +105,11 @@
       text-align: center;
       padding: 20px;
       margin-top: 40px;
+    }
+    footer a {
+      color: #FFCCBC;
+      margin: 0 10px;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -117,7 +119,9 @@
     <p>Track Weight, BMI, Body Fat and More with High Precision</p>
     <div class="cta-top">
       <p><strong>Price:</strong> ₹1,499/- (FREE Shipping in India)</p>
-      <button>Buy Now</button>
+      <a href="https://wa.me/919000000000?text=I%20want%20to%20order%20MiMi%20Smart%20Scale" target="_blank">
+        <button>Order on WhatsApp</button>
+      </a>
     </div>
   </header>
 
@@ -163,13 +167,50 @@
     </div>
 
     <div class="cta">
-      <p><strong>Price:</strong> ₹1,299/- (FREE Shipping in India)</p>
-      <button>Buy Now</button>
+      <p><strong>Price:</strong> ₹1,099/- (FREE Shipping in India)</p>
+      <button class="razorpay-button" onclick="payNow()">Buy Now with Razorpay</button>
+    </div>
+
+    <div class="upi-section">
+      <h2>Pay via UPI</h2>
+      <p>Scan the QR code below to make your payment:</p>
+      <img src="upi-qr-code.jpg" alt="UPI QR Code">
     </div>
   </div>
 
   <footer>
     <p>&copy; 2025 World Flow Exports. All Rights Reserved.</p>
+    <p>
+      <a href="#">Privacy Policy</a> |
+      <a href="#">Terms & Conditions</a> |
+      <a href="#">Return & Refund Policy</a>
+    </p>
   </footer>
+
+  <script>
+    function payNow() {
+      var options = {
+        key: W9genFCvYxuw1h3rRAvYfPxz // Replace with your Razorpay key
+        amount: 109900, // Amount is in paise (₹1,099)
+        currency: "INR",
+        name: "World Flow Exports",
+        description: "MiMi Smart Bluetooth Weighing Scale",
+        image: "https://yourdomain.com/logo.png",
+        handler: function (response){
+          alert("Payment successful! Razorpay ID: " + response.razorpay_payment_id);
+        },
+        prefill: {
+          name: "",
+          email: "",
+          contact: ""
+        },
+        theme: {
+          color: "#00BFA5"
+        }
+      };
+      var rzp = new Razorpay(options);
+      rzp.open();
+    }
+  </script>
 </body>
 </html>
