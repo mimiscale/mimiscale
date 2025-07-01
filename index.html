@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -190,8 +191,32 @@
   <script>
     function payNow() {
       var options = {
-        key: W9genFCvYxuw1h3rRAvYfPxz // Replace with your Razorpay key
-        amount: 109900, // Amount is in paise (₹1,099)
+      <button id="pay-btn" class="your-button-class">Buy Now with Razorpay</button>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var options = {
+    "key": "W9genFCvYxuw1h3rRAvYfPxz",  // Your Razorpay Key ID
+    "amount": "109900",             // ₹1,099 in paise
+    "currency": "INR",
+    "name": "MiMiScale",
+    "description": "Smart Bluetooth Body Weighing Scale",
+    "image": "https://mimiscale.github.io/mimiscale/scale.jpg",
+    "handler": function(response) {
+      alert("✅ Payment Successful!\nPayment ID: " + response.razorpay_payment_id);
+    },
+    "theme": {
+      "color": "#ff5722"
+    }
+  };
+
+  var rzp = new Razorpay(options);
+  document.getElementById("pay-btn").onclick = function(e) {
+    rzp.open();
+    e.preventDefault();
+  };
+});
+</script>
+
         currency: "INR",
         name: "World Flow Exports",
         description: "MiMi Smart Bluetooth Weighing Scale",
