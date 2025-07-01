@@ -22,22 +22,8 @@
       font-size: 32px;
     }
     header p {
-      margin: 10px 0 20px;
+      margin: 10px 0 0;
       font-size: 18px;
-    }
-    .cta-top, .cta {
-      text-align: center;
-      margin: 30px 0;
-    }
-    .cta-top a button, .cta a button, .razorpay-button {
-      background: #FF5722;
-      color: #fff;
-      padding: 15px 30px;
-      border: none;
-      font-size: 18px;
-      border-radius: 5px;
-      cursor: pointer;
-      text-decoration: none;
     }
     .container {
       max-width: 1200px;
@@ -90,14 +76,6 @@
       margin: 8px 0;
       font-size: 16px;
     }
-    .upi-section {
-      text-align: center;
-      margin-top: 50px;
-    }
-    .upi-section img {
-      max-width: 200px;
-      margin-top: 10px;
-    }
     footer {
       background: #263238;
       color: white;
@@ -116,12 +94,6 @@
   <header>
     <h1>MiMi Smart Bluetooth Body Weighing Scale</h1>
     <p>Track Weight, BMI, Body Fat and More with High Precision</p>
-    <div class="cta-top">
-      <p><strong>Price:</strong> ₹1,499/- (FREE Shipping in India)</p>
-      <a href="https://wa.me/919000000000?text=I%20want%20to%20order%20MiMi%20Smart%20Scale" target="_blank">
-        <button>Order on WhatsApp</button>
-      </a>
-    </div>
   </header>
 
   <div class="container">
@@ -164,17 +136,6 @@
       <h2>Perfect for All</h2>
       <p>Whether you're an athlete, a health enthusiast, or just getting started, MiMi Scale offers tailored insights for every user. Track and manage your health data easily from your smartphone.</p>
     </div>
-
-    <div class="cta">
-      <p><strong>Price:</strong> ₹1,099/- (FREE Shipping in India)</p>
-      <button id="pay-btn" class="razorpay-button">Buy Now with Razorpay</button>
-    </div>
-
-    <div class="upi-section">
-      <h2>Pay via UPI</h2>
-      <p>Scan the QR code below to make your payment:</p>
-      <img src="upi-qr-code.jpg" alt="UPI QR Code">
-    </div>
   </div>
 
   <footer>
@@ -185,31 +146,5 @@
       <a href="#">Return & Refund Policy</a>
     </p>
   </footer>
-
-  <!-- Razorpay Script -->
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var options = {
-        "key": "W9genFCvYxuw1h3rRAvYfPxz",
-        "amount": "109900",  // ₹1,099 in paise
-        "currency": "INR",
-        "name": "MiMiScale",
-        "description": "Smart Bluetooth Body Weighing Scale",
-        "handler": function (response){
-            alert("✅ Payment Successful!\\nPayment ID: " + response.razorpay_payment_id);
-        },
-        "theme": {
-          "color": "#ff5722"
-        }
-      };
-
-      var rzp = new Razorpay(options);
-      document.getElementById("pay-btn").onclick = function(e){
-        rzp.open();
-        e.preventDefault();
-      };
-    });
-  </script>
 </body>
 </html>
