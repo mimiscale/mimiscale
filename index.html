@@ -148,3 +148,64 @@
   </footer>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buy MiMi Smart Scale</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      text-align: center;
+      padding: 100px 20px;
+    }
+    h1 {
+      color: #00BFA5;
+    }
+    button {
+      background-color: #FF5722;
+      color: #fff;
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>MiMi Smart Bluetooth Scale</h1>
+  <p>Buy now for ₹1,099 (Free Shipping)</p>
+  <button id="buy-button">Buy Now with Razorpay</button>
+
+  <!-- Razorpay Script -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+    document.getElementById("buy-button").onclick = function (e) {
+      var options = {
+        "key": "rzp_live_OjYf5aBv52WN0A", // ✅ Your new live key
+        "amount": 109900, // ₹1,099 in paise
+        "currency": "INR",
+        "name": "MiMiScale",
+        "description": "Smart Bluetooth Body Weighing Scale",
+        "image": "https://mimiscale.github.io/mimiscale/scale.jpg", // optional
+        "handler": function (response) {
+          alert("✅ Payment Successful!\nPayment ID: " + response.razorpay_payment_id);
+        },
+        "theme": {
+          "color": "#FF5722"
+        }
+      };
+
+      var rzp = new Razorpay(options);
+      rzp.open();
+      e.preventDefault();
+    };
+  </script>
+
+</body>
+</html>
+
