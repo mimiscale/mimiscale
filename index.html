@@ -235,4 +235,47 @@
     e.preventDefault();
   };
 </script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Buy MimiScale</title>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body style="font-family: Arial; text-align: center; padding-top: 100px;">
+
+  <h1>MimiScale</h1>
+  <p>Buy Digital Scale for ₹500</p>
+
+  <button id="buy-now" style="padding: 12px 24px; font-size: 18px;">Buy Now</button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var options = {
+        "key": "W9genFCvYxuw1h3rRAvYfPxz", // Your Razorpay Key ID
+        "amount": "50000", // 500 INR in paise
+        "currency": "INR",
+        "name": "MimiScale",
+        "description": "Purchase Digital Scale",
+        "image": "https://mimiscale.github.io/mimiscale/logo.png", // Optional
+        "handler": function (response){
+          alert("✅ Payment Successful!\nPayment ID: " + response.razorpay_payment_id);
+        },
+        "theme": {
+          "color": "#3399cc"
+        }
+      };
+
+      var rzp = new Razorpay(options);
+
+      document.getElementById('buy-now').onclick = function (e) {
+        rzp.open();
+        e.preventDefault();
+      };
+    });
+  </script>
+
+</body>
+</html>
+
 
