@@ -274,6 +274,35 @@
       };
     });
   </script>
+<!-- Razorpay Buy Button -->
+<button id="pay-btn" style="padding: 12px 24px; font-size: 16px; background-color: #ff5722; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
+  Buy Now with Razorpay
+</button>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var options = {
+      "key": "W9genFCvYxuw1h3rRAvYfPxz", // your Razorpay Key ID
+      "amount": "109900", // ₹1,099 in paise
+      "currency": "INR",
+      "name": "MiMiScale",
+      "description": "Smart Bluetooth Body Weighing Scale",
+      "handler": function (response){
+          alert("✅ Payment Successful!\nPayment ID: " + response.razorpay_payment_id);
+      },
+      "theme": {
+        "color": "#ff5722"
+      }
+    };
+
+    var rzp = new Razorpay(options);
+    document.getElementById("pay-btn").onclick = function(e){
+      rzp.open();
+      e.preventDefault();
+    };
+  });
+</script>
 
 </body>
 </html>
