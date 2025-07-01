@@ -214,3 +214,25 @@
   </script>
 </body>
 </html>
+<button id="pay-btn" style="padding: 12px 24px; font-size: 16px;">Pay Now</button>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+  var options = {
+    "key": "W9genFCvYxuw1h3rRAvYfPxz",
+    "amount": "1499",
+    "currency": "INR",
+    "name": "MimiScale",
+    "description": "Digital Scale",
+    "handler": function (response){
+        alert("✅ Payment Successful!\nPayment ID: " + response.razorpay_payment_id);
+    },
+    "theme": { "color": "#3399cc" }
+  };
+  var rzp = new Razorpay(options);
+  document.getElementById('pay-btn').onclick = function(e){
+    rzp.open();
+    e.preventDefault();
+  };
+</script>
+
